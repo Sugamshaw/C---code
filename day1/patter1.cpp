@@ -66,6 +66,26 @@ void squarehollow(int side)
         cout << endl;
     }
 }
+void squarehollowdiagonal(int side)
+{
+    cout << "Square diagonal\n"
+         << endl;
+    for (int i = 0; i < side; i++)
+    {
+        for (int j = 0; j < side; j++)
+        {
+            if (i == 0 || i == side - 1 || j == 0 || j == side - 1 || (i == j) || ((i + j) == side - 1))
+            {
+                cout << "* ";
+            }
+            else
+            {
+                cout << "  ";
+            }
+        }
+        cout << endl;
+    }
+}
 int main()
 {
     squaresolid(5);
@@ -78,6 +98,9 @@ int main()
     cout << endl;
     cout << endl;
     rectanglehollow(4, 6);
+    cout << endl;
+    cout << endl;
+    squarehollowdiagonal(10);
 
     return 0;
 }
