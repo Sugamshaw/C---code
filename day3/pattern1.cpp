@@ -194,7 +194,7 @@ void pattern7(int n)
          << endl;
     for (int i = 0; i < n; i++)
     {
-        int cond = i <= n / 2 ? 2 * i : 2 * (n - i - 1);
+        int cond = (i <= n / 2) ? 2 * i : 2 * (n - i - 1);
         for (int j = 0; j <= cond; j++)
         {
             if (j <= cond / 2)
@@ -209,6 +209,23 @@ void pattern7(int n)
         cout << endl;
     }
 }
+void pattern8(int n)
+{
+    cout << "pattern8\n"
+         << endl;
+    for (int i = 1; i <= n; i++)
+    {
+        int c = 1;
+
+        for (int j = 1; j <= i; j++)
+        {
+            cout << c;
+            c = c * (i - j) / j;
+        }
+        cout << endl;
+    }
+}
+
 int main()
 {
     pattern1(5);
@@ -230,6 +247,9 @@ int main()
     cout << endl;
     cout << endl;
     pattern7(7);
+    cout << endl;
+    cout << endl;
+    pattern8(5);
 
     return 0;
 }
