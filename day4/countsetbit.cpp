@@ -14,7 +14,7 @@ int countsetbit(int n)
     return count;
 }
 
-int main()
+int main()   
 {
     cout << countsetbit(23);
     return 0;
