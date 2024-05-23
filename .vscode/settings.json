@@ -3,6 +3,7 @@
     "*.c": "c",
     "iostream": "cpp",
     "ostream": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "istream": "cpp"
   }
 }
