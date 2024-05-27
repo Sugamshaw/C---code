@@ -3,6 +3,7 @@ using namespace std;
 int func()
 {
 return 0;
+return 0;
 }
 int main()
 {
