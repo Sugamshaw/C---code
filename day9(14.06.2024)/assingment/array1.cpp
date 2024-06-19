@@ -275,9 +275,9 @@
 // class Solution {
 // public:
 //     int findDuplicate(vector<int>& nums) {
-        
+
 //         //m1
-        
+
 //         // sort(nums.begin(),nums.end());
 //         // for(int i=1;i<nums.size();i++){
 //         //     if(nums[i]==nums[i-1]){
@@ -292,7 +292,7 @@
 //         //         return pos;
 //         //     }
 //         //     else{
-//         //         nums[pos]*=-1; 
+//         //         nums[pos]*=-1;
 //         //     }
 //         // }
 //         // return -1;
@@ -303,14 +303,307 @@
 //         }
 //         return nums[0];
 
-        
 //     }
 // };
 
 // 9. Missing Element From An Array With Duplicates
-// 10. Find First Repeating Element
-// 11. Common Element in 3 Sorted Array
+// m1
+// #include <iostream>
+// using namespace std;
+// int missing(int arr[], int size)
+// {
+//     for (int i = 0; i < size; i++)
+//     {
+//         int pos = abs(arr[i]);
+//         if (arr[pos - 1] > 0)
+//         {
+//             arr[pos - 1] *= -1;
+//         }
+//     }
+//     for (int i = 0; i < size; i++)
+//     {
+//         if (arr[i] > 0)
+//         {
+//             return i + 1;
+//         }
+//     }
+// }
+// int main()
+// {
+//     int arr[] = {1, 3, 5, 3, 4,6,7,2};
+//     cout << "Missing :" << missing(arr, 8) << endl;
+//     return 0;
+// }
+// m2
+// #include <iostream>
+// using namespace std;
+// void missing(int arr[], int size)
+// {
+//     int i = 0;
+//     while (i < size)
+//     {
+//         int index = arr[i] - 1;
+//         if (arr[i] != arr[index])
+//         {
+//             swap(arr[i], arr[index]);
+//         }
+//         else
+//         {
+//             i++;
+//         }
+//     }
+//     for (int i = 0; i < size; i++)
+//     {
+//         if (arr[i] != i + 1)
+//         {
+
+//             cout << i + 1 << endl;
+//         }
+//     }
+// }
+// int main()
+// {
+//     int arr[] = {1, 3, 5, 3, 4};
+//     int n = sizeof(arr) / sizeof(arr[0]);
+//     missing(arr, n);
+//     return 0;
+// }
+
+// 10. Find First Repeating Element : https://www.geeksforgeeks.org/problems/first-repeating-element4018/1
+
+// #include <unordered_map>
+// #include <iostream>
+// using namespace// namespace
+
+// int firstRepeated(int arr[], int n)
+// {
+//     // code here
+//     // m2
+//     unordered_map<int, int> hash;
+//     for (int i = 0; i < n; i++)
+//     {
+//         hash[arr[i]]++;
+//     }
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (hash[arr[i]] > 1)
+//         {
+//             return i + 1;
+//         }
+//     }
+
+//     // //m1
+//     // for(int i=0;i<n;i++){
+//     //     for(int j=i+1;j<n;j++){
+//     //         if(arr[i]==arr[j]){
+//     //             return i+1;
+//     //         }
+//     //     }
+//     // }
+
+//     return -1;
+// }
+
+// int main()
+// {
+//     int arr[] = {1, 9, 3, 4, 3, 9, 6};
+//     int n = sizeof(arr) / sizeof(arr[0]);
+//     cout << firstRepeated(arr, n) << endl;
+//     return 0;
+// }
+
+// 11. Common Element in 3 Sorted Array : https://www.geeksforgeeks.org/problems/common-elements1132/1
+
+// vector<int> commonElements(int A[], int B[], int C[], int n1, int n2, int n3)
+// {
+//     vector<int> ans;
+//     set<int> st;
+//     int i = 0, j = 0, k = 0;
+
+//     while (i < n1 && j < n2 && k < n3)
+//     {
+//         if (A[i] == B[j] && B[j] == C[k])
+//         {
+//             st.insert(A[i]);
+//             i++;
+//             j++;
+//             k++;
+//         }
+//         else if (A[i] < B[j])
+//         {
+//             i++;
+//         }
+//         else if (B[j] < C[k])
+//         {
+//             j++;
+//         }
+//         else
+//         {
+//             k++;
+//         }
+//     }
+//     for (auto i : st)
+//     {
+//         ans.push_back(i);
+//     }
+
+//     return ans;
+// }
+
 // 12. Wave Print A Matrix
-// 13. Spiral Print A Matrix
-// 14. Add two numbers represented by two Arrays
+
+// #include <iostream>
+// using namespace std;
+// int columnwavePrint(int arr[][4],int row,int col)
+// {
+//     for(int i=0;i<col;i++){
+//         for(int j=0;j<row;j++){
+//             if((i & 1)==0){
+//                 cout<<arr[j][i]<<" ";
+//             }
+//             else{
+//                 cout<<arr[row-j-1][i]<<" ";
+//             }
+//         }
+//     }
+// }
+// int rowwavePrint(int arr[][4],int row,int col)
+// {
+//     for(int i=0;i<row;i++){
+//         for(int j=0;j<col;j++){
+//             if((i & 1)==0){
+//                 cout<<arr[i][j]<<" ";
+//             }
+//             else{
+//                 cout<<arr[i][col-j-1]<<" ";
+//             }
+//         }
+//     }
+// }
+// int main()
+// {
+//     int arr[3][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
+//     // columnwavePrint(arr,3,4);
+//     rowwavePrint(arr,3,4);
+//     return 0;
+// }
+
+// 13. Spiral Print A Matrix:
+// #include <iostream>
+// using namespace std;
+// void sipral(int arr[][4], int row, int col)
+// {
+//     int sr = 0, er = row - 1, sc = 0, ec = col - 1;
+//     int total = row * col, count = 0;
+//     while (count < total)
+//     {
+//         for (int i = sc; i <= ec&& count < total; i++)
+//         {
+//             cout << arr[sc][i] << " ";
+//             count++;
+//         }
+//         for (int i = sr + 1; i <= er&& count < total; i++)
+//         {
+//             cout << arr[i][ec] << " ";
+//             count++;
+//         }
+//         for (int i = ec - 1; i >= sc&& count < total; i--)
+//         {
+//             cout << arr[er][i] << " ";
+//             count++;
+//         }
+//         for (int i = er - 1; i >= sr+1&& count < total; i--)
+//         {
+//             cout << arr[i][sc] << " ";
+//             count++;
+//         }
+//         sr++;
+//         sc++;
+//         er--;
+//         ec--;
+//     }
+// }
+// int main()
+// {
+//     int arr[3][4] = {{1, 2, 3, 4},
+//                      {5, 6, 7, 8},
+//                      {9, 10, 11, 12}};
+//     sipral(arr, 3, 4);
+//     return 0;
+// }
+
+// 14. Add two numbers represented by two Arrays: https://www.geeksforgeeks.org/problems/add-two-numbers-represented-by-two-arrays2408/1
+
+// class Solution{
+//     public:
+//     string calc_Sum(int *a,int n,int *b,int m){
+//     // Complete the function
+        
+//         int carry=0;
+//         string ans;
+//         int i=n-1;
+//         int j=m-1;
+        
+//         while(i>=0 && j>=0){
+            
+//             int x=a[i--]+b[j--]+carry;
+//             int digit=x%10;
+//             carry=x/10;
+//             ans.push_back(digit+'0');
+//         }
+//         while(i>=0)
+//         {
+//             int x=a[i--]+0+carry;
+//             int digit=x%10;
+//             carry=x/10;
+//             ans.push_back(digit+'0');
+//         }
+//         while(j>=0)
+//         {
+//             int x=0+b[j--]+carry;
+//             int digit=x%10;
+//             carry=x/10;
+//             ans.push_back(digit+'0');
+            
+//         }
+//         if(carry){
+//             ans.push_back(carry+'0');
+//         }
+        
+//         while(ans[ans.size()-1]=='0'){
+//             ans.pop_back();
+//         }
+//         reverse(ans.begin(),ans.end());
+        
+//         return ans;
+        
+//     }
+// };
+
 // 15. Factorial of A Large Number
+
+// class Solution {
+// public:
+//     vector<int> factorial(int N){
+//         // code here
+//         vector<int> ans;
+//         ans.push_back(1);
+        
+//         for(int i=2;i<=N;i++){
+//             int carry=0;
+//             for(int j=0;j<ans.size();j++)
+//             {
+//                 int x=ans[j]*i+carry;
+//                 ans[j]=x%10;
+//                 carry=x/10;
+//             }
+//             while(carry){
+//                 ans.push_back(carry%10);
+//                 carry/=10;
+//             }
+//         }
+//         reverse(ans.begin(),ans.end());
+//         return ans;
+//     }
+// };
